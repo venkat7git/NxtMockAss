@@ -35,15 +35,15 @@ body {
   color: #ffffff;
 }
 
-@media screen and (max-width:450px){
-  .main-container{
+@media screen and (max-width: 450px) {
+  .main-container {
     padding: 15px;
   }
-  .search-input{
+  .search-input {
     width: 200px;
     height: 30px;
   }
-  .search-button{
+  .search-button {
     width: 70px;
     height: 30px;
   }

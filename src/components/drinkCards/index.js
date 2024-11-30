@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom'
 import Popup from 'reactjs-popup'
 import 'reactjs-popup/dist/index.css'
 import './index.css'
@@ -64,7 +63,7 @@ const DrinkCard = props => {
       <Popup
         trigger={
           <div className="link-item">
-            <img src={strDrinkThumb} className="drink-image" />
+            <img src={strDrinkThumb} alt="drink" className="drink-image" />
             <h1 className="drink-name">{strDrink}</h1>
             <p className="description">{strTags}</p>
           </div>
