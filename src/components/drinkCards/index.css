@@ -1,0 +1,36 @@
+.list-itme {
+  background-color: #ffffff;
+  border-radius: 7px;
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.drink-name {
+  font-size: 24px;
+  margin: 0px;
+}
+.description {
+  font-size: 16px;
+  margin: 0px;
+}
+
+.drink-image {
+  width: 100px;
+  margin-bottom: 15px;
+}
+.link-item {
+  text-decoration: none;
+  color: black;
+}
+.link-item:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 450px) {
+  .list-itme {
+    width: 100%;
+  }
+}
