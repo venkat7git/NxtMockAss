@@ -92,3 +92,10 @@ body {
   max-width: 170px;
   word-wrap: break-word;
 }
+
+.search-validation {
+  padding-left: 5px;
+  margin: 0px;
+  color: red;
+  font-size: 14px;
+}

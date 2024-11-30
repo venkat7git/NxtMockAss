@@ -14,6 +14,7 @@ const Home = () => {
   const [searchInput, setSearchInput] = useState('')
   const [drinksData, setDrinksData] = useState([])
   const [apiStatus, setApiStatus] = useState(apiConstants.initial)
+  const [isValid, setValidation] = useState(false)
 
   const getData = async drinkName => {
     setApiStatus(apiConstants.inProgress)
@@ -54,21 +55,17 @@ const Home = () => {
     </div>
   )
 
-  const successView = () => {
-    console.log(drinksData)
-
-    return (
-      <ul className="drinks-container">
-        {drinksData.map(eachDrink => (
-          <DrinkCard
-            onDrinkDetails={onDrinkPopup}
-            key={eachDrink.idDrink}
-            drinkCardDetails={eachDrink}
-          />
-        ))}
-      </ul>
-    )
-  }
+  const successView = () => (
+    <ul className="drinks-container">
+      {drinksData.map(eachDrink => (
+        <DrinkCard
+          onDrinkDetails={onDrinkPopup}
+          key={eachDrink.idDrink}
+          drinkCardDetails={eachDrink}
+        />
+      ))}
+    </ul>
+  )
 
   const NoDataView = () => (
     <div className="no-data-container">
@@ -90,26 +87,44 @@ const Home = () => {
   }
 
   const onClickSearch = () => {
-    getData(searchInput)
+    if (searchInput === '') {
+      setValidation(true)
+    } else {
+      getData(searchInput)
+    }
   }
 
   const onChangeSearchInput = event => {
+    if (event.target.value.length === 1) {
+      setValidation(false)
+    }
     setSearchInput(event.target.value)
   }
 
   return (
     <div className="main-container">
       <div className="search-container">
-        <input
-          type="search"
-          value={searchInput}
-          onChange={onChangeSearchInput}
-          placeholder="Enter a key to search"
-          className="search-input"
-        />
-        <button type="button" onClick={onClickSearch} className="search-button">
-          Search
-        </button>
+        <div>
+          <input
+            type="search"
+            value={searchInput}
+            onChange={onChangeSearchInput}
+            placeholder="Enter a key to search"
+            className="search-input"
+            required
+          />
+
+          <button
+            type="button"
+            onClick={onClickSearch}
+            className="search-button"
+          >
+            Search
+          </button>
+        </div>
+        {isValid && (
+          <p className="search-validation">search input should not be empty</p>
+        )}
       </div>
 
       {apiView()}
