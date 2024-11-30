@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react'
+import {Puff} from 'react-loader-spinner'
 import DrinkCard from '../drinkCards'
 
 import './index.css'
@@ -73,6 +74,20 @@ const Home = () => {
     </div>
   )
 
+  const inProgressView = () => (
+    <div className="no-data-container">
+      <Puff
+        visible
+        height="50"
+        width="50"
+        color="#4fa94d"
+        ariaLabel="puff-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+      />
+    </div>
+  )
+
   const apiView = () => {
     switch (apiStatus) {
       case apiConstants.success:
@@ -80,7 +95,7 @@ const Home = () => {
       case apiConstants.failure:
         return NoDataView()
       case apiConstants.inProgress:
-        return null
+        return inProgressView()
       default:
         return null
     }
